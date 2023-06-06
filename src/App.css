@@ -111,6 +111,14 @@ img {
   transform: scale(1.2);
 }
 
+.content__search h6 {
+  margin-top: 0.5em;
+}
+
+.content__search h6 span {
+  color: red;
+}
+
 .content__location {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   background-color: rgb(15, 75, 50);
@@ -189,6 +197,11 @@ hr {
 .character__info-list li span:nth-child(2) {
   font-size: 1rem;
   font-weight: bold;
+}
+
+.error__message {
+  margin-top: 1em;
+  color: yellow;
 }
 
 @media (min-width: 700px) {

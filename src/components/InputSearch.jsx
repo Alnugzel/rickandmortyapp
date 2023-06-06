@@ -1,11 +1,16 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
+import randomNumber from "../utils/randomNumber";
 
 const InputSearch = ({ setLocationNumber }) => {
   const locationSearch = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLocationNumber(locationSearch.current.value.trim());
+    if (locationSearch.current.value === "") {
+      setLocationNumber(randomNumber(126));
+    } else {
+      setLocationNumber(locationSearch.current.value.trim());
+    }
   };
 
   return (
@@ -18,6 +23,10 @@ const InputSearch = ({ setLocationNumber }) => {
           placeholder="Search Location"
         />
         <button className="button__search">Search</button>
+        <h6>
+          <span>*</span> if the search location field is empty, a random search
+          will be executed
+        </h6>
       </form>
     </div>
   );

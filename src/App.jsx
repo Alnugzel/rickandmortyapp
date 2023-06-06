@@ -5,14 +5,14 @@ import "./App.css";
 import LocationInfo from "./components/LocationInfo";
 import Characters from "./components/Characters";
 import InputSearch from "./components/InputSearch";
+import Error from "./components/Error";
 
 function App() {
-  const [locationNumber, setLocationNumber] = useState();
+  const [locationNumber, setLocationNumber] = useState(randomNumber(126));
 
-  const url = `https://rickandmortyapi.com/api/location/${
-    randomNumber(126) || locationNumber
-  }`;
-  const [location, getLocation] = useFetch(url);
+  const url = `https://rickandmortyapi.com/api/location/${locationNumber}`;
+
+  const [location, getLocation, hasError] = useFetch(url);
 
   useEffect(() => {
     getLocation();
@@ -29,12 +29,18 @@ function App() {
 
         <InputSearch setLocationNumber={setLocationNumber} />
 
-        <LocationInfo location={location} />
-        <div className="characters">
-          {location?.residents.map((url) => (
-            <Characters url={url} key={url} />
-          ))}
-        </div>
+        {hasError ? (
+          <Error />
+        ) : (
+          <>
+            <LocationInfo location={location} />
+            <div className="characters">
+              {location?.residents.map((url) => (
+                <Characters url={url} key={url} />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </>
   );
