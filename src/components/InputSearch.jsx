@@ -9,10 +9,15 @@ const InputSearch = ({ setLocationNumber }) => {
   };
 
   return (
-    <div>
+    <div className="content__search">
       <form onSubmit={handleSubmit}>
-        <input ref={locationSearch} type="text" placeholder="Search Location" />
-        <button>Search</button>
+        <input
+          className="input__search"
+          ref={locationSearch}
+          type="text"
+          placeholder="Search Location"
+        />
+        <button className="button__search">Search</button>
       </form>
     </div>
   );

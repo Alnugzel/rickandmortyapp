@@ -20,27 +20,24 @@ const Characters = ({ url }) => {
             : `🔴${character?.status}`}
         </h5>
       </div>
-      <h3>{character?.name}</h3> <hr />
-      <ul>
-        <li>
-          <span>
-            Specie <span></span>
-            {character?.species}
-          </span>
-        </li>
-        <li>
-          <span>
-            Origin <span></span>
-            {character?.origin.name}
-          </span>
-        </li>
-        <li>
-          <span>
-            Eppisodes where appear <span></span>
-            {character?.episode.length}
-          </span>
-        </li>
-      </ul>
+      <div className="character__info">
+        <h3>{character?.name}</h3>
+        <hr />
+        <ul className="character__info-list">
+          <li>
+            <span>Specie</span>
+            <span> {character?.species}</span>
+          </li>
+          <li>
+            <span>Origin</span>
+            <span>{character?.origin.name}</span>
+          </li>
+          <li>
+            <span>Eppisodes where appear</span>
+            <span>{character?.episode.length}</span>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };
